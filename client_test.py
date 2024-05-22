@@ -25,6 +25,12 @@ class ClientTest(unittest.TestCase):
              'top_bid': {'price': 117.87, 'size': 81}, 'id': '0.109974697771', 'stock': 'DEF'}
         ]
         """ ------------ Add the assertion below ------------ """
+        for quote in quotes:
+            self.assertEqual(getDataPoint(quote), (quote['stock'], float(quote['top_bid']['price']),
+                                                   float(quote['top_ask']['price']),
+                                                   (float(quote['top_bid']['price']) + float(
+                                                       quote['top_ask']['price'])) / 2))
+
 
     """ ------------ Add more unit tests ------------ """
 
